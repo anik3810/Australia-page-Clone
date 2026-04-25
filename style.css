@@ -23,7 +23,7 @@
 
 /* HEADER */
 .header {
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
   height: 70px;
   background: white;
@@ -40,6 +40,7 @@
   font-weight: bold;
   display: flex;
   gap: 8px;
+  cursor: pointer;
 }
 
 .nav a {
@@ -55,6 +56,14 @@
   margin-left: 15px;
   cursor: pointer;
 }
+/* HAMBURGER (DEFAULT = hidden on large screens) */
+.menu-toggle {
+  display: none;
+}
+.nav {
+  display: flex;
+}
+
 
 /* HERO */
 .hero {
@@ -66,7 +75,7 @@
   align-items: center;
   text-align: center;
   position: relative;
-  min-height: 800px;
+  min-height: 768px;
 }
 
 .overlay {
@@ -80,23 +89,28 @@
   position: relative;
   color: rgb(255, 234, 116);
   z-index: 2;
-  max-width: 1400px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 80px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 5rem;
   font-weight: bold;
   line-height: 1.03;
   letter-spacing: -1.5px;
-  max-width: 1000px;
+  max-width: 900px;
+  padding-top: 16px;
   padding-bottom: 80px;
+}
+
+.hero-title em{
+  font-size: 18vw;
+  font-style: normal;
 }
 
 
@@ -105,6 +119,7 @@
 .section {
   padding: 80px;
   text-align: center;
+ 
 }
 
 
@@ -134,6 +149,7 @@
   height: 450px;
   justify-content: space-around;
   padding: 15px;
+  margin-bottom: 80px;
   border-radius: 12px;
   display: flex;
   align-items: flex-end;
@@ -156,41 +172,75 @@
   font-size: 14px;
 }
 
-/* BANNER */
-.banner {
-  height: 950px;
-  background: url('https://www.getours.com/media/yvsg3dsd/australia-new-zealand-tours-uluru-rock.jpg?');
+
+
+
+.sec-7{
+  height: 450px;
+  justify-content: space-around;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-end;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  font-weight: 400;
+  background-size: cover;
+  box-sizing: border-box;
+  cursor:pointer;
+  background: url('https://www.tourism.australia.com/content/dam/digital/global/campaigns/casg/homepage-hero-ruby-sydney-nsw.png') center/cover;
 }
 
-/*.banner button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: #ffcc00;
-  border: none;
-}*/
-
-/* INFO */
-.info {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 50px;
+.button2 {
+  padding: 10px;
+  border-radius: 30px;
+  background-color: var(--gold);
+  font-size: 14px;
 }
 
-.box {
-  width: 200px;
-  height: 120px;
-  background: #eee;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* @Australia section8 */
+.section8 {
+  padding: 0 80px;
 }
 
+.title {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.grid-1{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+
+/* INSTAGRAM ICON */
+.card .insta-icon {
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
 
 /*footer section*/
 
@@ -198,6 +248,7 @@
   background-color: #2daec1;
   color: white;
   padding: 60px 20px;
+  margin-top: 20px;
 }
 
 .container {
@@ -276,6 +327,7 @@ select {
   gap: 15px;
   margin: 10px;
   align-items: flex-end;
+  text-align: justify;
 
 }
 
@@ -284,5 +336,103 @@ select {
 }
 
 .copyright-container{
+
+}
+
+
+
+
+/* responsive navbar */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+  .actions {
+    display: none;
+  }
+  /* Show hamburger */
+  .menu-toggle {
+    display: block;
+    font-size: 28px;
+  }
+
+  /* Hide nav initially */
+  .nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    display: none;
+    z-index: 9998;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 15px 0;
+    text-align: center;
+    border-top: 1px solid #eee;
+  }
+  .section {
+    padding: 40px 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    height: 200px;
+  }
+
+  .c4 {
+    height: 280px;
+  }
+
+  .button {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+  /* @section8 */
+  .section8 {
+    padding: 0 4px;
+  }
+  
+  .grid-1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  /* CARD */
+  .card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+  
+  }
+  
+  /* IMAGE */
+  .card img {
+    width: 100%;
+    border-radius: 8px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* INSTAGRAM ICON */
+  .card .insta-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+  }
 
 }
